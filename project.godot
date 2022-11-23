@@ -11,6 +11,7 @@ config_version=4
 [application]
 
 config/name="Aal_game"
+run/main_scene="res://Levels/Base.tscn"
 config/icon="res://icon.png"
 
 [physics]
