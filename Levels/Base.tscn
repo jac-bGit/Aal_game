@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Prefabs/Consumables/ConsumablesManager.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Prefabs/Consumables/Consumable.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Sprites/Placeholders/LivingRoom1.jpg" type="Texture" id=3]
 [ext_resource path="res://Prefabs/Photos/PhotoManager.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Prefabs/Photos/Photo.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Sprites/Placeholders/ph_photo2.jpg" type="Texture" id=6]
+[ext_resource path="res://Sprites/Placeholders/ph_photo3.jpg" type="Texture" id=7]
+[ext_resource path="res://Prefabs/Photos/PuzzlePosition.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Prefabs/Photos/Puzzle.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Prefabs/Photos/PuzzlePiece.tscn" type="PackedScene" id=10]
 
 [node name="World" type="Node2D"]
 
@@ -54,3 +59,43 @@ scale = Vector2( 0.461216, 0.461216 )
 m_ConsumableManagerPath = NodePath("../ConsumablesManager")
 
 [node name="Photo" parent="PhotoManager" instance=ExtResource( 5 )]
+visible = false
+m_TexturePath = NodePath("")
+
+[node name="PuzzlePiece2" parent="PhotoManager/Photo" instance=ExtResource( 10 )]
+position = Vector2( -1301.61, -1022 )
+scale = Vector2( 0.3, 0.3 )
+m_PosPath = NodePath("../../../Puzzle/Positions/PuzzlePosition")
+
+[node name="Photo2" parent="PhotoManager" instance=ExtResource( 5 )]
+visible = false
+m_Image = ExtResource( 6 )
+
+[node name="PuzzlePiece2" parent="PhotoManager/Photo2" instance=ExtResource( 10 )]
+position = Vector2( 1378.74, 1012.36 )
+scale = Vector2( 0.3, 0.3 )
+m_PosPath = NodePath("../../../Puzzle/Positions/PuzzlePosition2")
+
+[node name="Photo3" parent="PhotoManager" instance=ExtResource( 5 )]
+m_Image = ExtResource( 7 )
+
+[node name="PuzzlePiece2" parent="PhotoManager/Photo3" instance=ExtResource( 10 )]
+position = Vector2( 115.697, -1012.36 )
+scale = Vector2( 0.3, 0.3 )
+m_PosPath = NodePath("../../../Puzzle/Positions/PuzzlePosition3")
+
+[node name="Puzzle" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1424, 696 )
+scale = Vector2( 0.317231, 0.317231 )
+m_PositionsPath = NodePath("Positions")
+
+[node name="Positions" type="Node2D" parent="Puzzle"]
+
+[node name="PuzzlePosition" parent="Puzzle/Positions" instance=ExtResource( 8 )]
+position = Vector2( -262, -201 )
+
+[node name="PuzzlePosition2" parent="Puzzle/Positions" instance=ExtResource( 8 )]
+position = Vector2( 266, -195 )
+
+[node name="PuzzlePosition3" parent="Puzzle/Positions" instance=ExtResource( 8 )]
+position = Vector2( -249, 194 )
