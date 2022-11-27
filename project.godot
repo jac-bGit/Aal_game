@@ -8,11 +8,34 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "SCR_Consumable",
+"language": "GDScript",
+"path": "res://Scripts/Consumables/SCR_Consumable.gd"
+}, {
+"base": "Node2D",
+"class": "SRC_ConsumableManager",
+"language": "GDScript",
+"path": "res://Scripts/Consumables/SCR_ConsumablesManager.gd"
+} ]
+_global_script_class_icons={
+"SCR_Consumable": "",
+"SRC_ConsumableManager": ""
+}
+
 [application]
 
 config/name="Aal_game"
 run/main_scene="res://Levels/Base.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=1280
+window/size/height=720
+window/size/borderless=true
+window/size/fullscreen=true
 
 [physics]
 

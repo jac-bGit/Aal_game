@@ -1,17 +1,56 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Prefabs/Consumables/ConsumablesManager.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Prefabs/Consumables/Consumable.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Sprites/Placeholders/LivingRoom1.jpg" type="Texture" id=3]
+[ext_resource path="res://Prefabs/Photos/PhotoManager.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Prefabs/Photos/Photo.tscn" type="PackedScene" id=5]
 
 [node name="World" type="Node2D"]
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 953, 474 )
+scale = Vector2( 1.18539, 1 )
+z_index = 100
+current = true
+
+[node name="Enviroment" type="Node2D" parent="."]
+
+[node name="LivingRoom" type="Sprite" parent="Enviroment"]
+position = Vector2( 945, 448 )
+scale = Vector2( 0.333165, 0.333165 )
+texture = ExtResource( 3 )
+
 [node name="ConsumablesManager" parent="." instance=ExtResource( 1 )]
+position = Vector2( 429, 705 )
+z_index = 1
 
 [node name="Consumable" parent="ConsumablesManager" instance=ExtResource( 2 )]
 position = Vector2( 50, 48 )
+m_cColor = Color( 0.992157, 0.117647, 0.360784, 1 )
+
+[node name="Consumable1" parent="ConsumablesManager" instance=ExtResource( 2 )]
+modulate = Color( 0.113725, 0.392157, 0.556863, 1 )
+position = Vector2( 141, 46 )
+m_bPositive = false
+m_cColor = Color( 0.0862745, 0.670588, 0.847059, 1 )
 
 [node name="Consumable2" parent="ConsumablesManager" instance=ExtResource( 2 )]
-modulate = Color( 0.188235, 0.678431, 0.172549, 1 )
-position = Vector2( 114, 51 )
-m_bPositive = false
+modulate = Color( 0.419608, 0.215686, 0, 1 )
+position = Vector2( 629, 53 )
+m_cColor = Color( 0.509804, 0.247059, 0.0705882, 1 )
 m_EffectType = 1
+
+[node name="Consumable3" parent="ConsumablesManager" instance=ExtResource( 2 )]
+modulate = Color( 0.188235, 0.678431, 0.172549, 1 )
+position = Vector2( 728, 51 )
+m_bPositive = false
+m_cColor = Color( 0.109804, 0.733333, 0.0392157, 1 )
+m_EffectType = 1
+
+[node name="PhotoManager" parent="." instance=ExtResource( 4 )]
+position = Vector2( 931, 312 )
+scale = Vector2( 0.461216, 0.461216 )
+m_ConsumableManagerPath = NodePath("../ConsumablesManager")
+
+[node name="Photo" parent="PhotoManager" instance=ExtResource( 5 )]

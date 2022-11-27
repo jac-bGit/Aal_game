@@ -1,9 +1,10 @@
-extends Node2D
+class_name SCR_Consumable extends Node2D
 
 # Enum
 enum EEffect{
 	VISIBILITY,
-	FOCUS
+	FOCUS, 
+	EnumSize
 }
 
 # Attributes
@@ -14,14 +15,18 @@ export var m_cColor = Color.white
 export(EEffect) var m_EffectType = EEffect.VISIBILITY
 
 # Vars
+var m_iStep = 1
 
 # Signals
-signal use
+signal signal_OnUse
 
 #-------------------------------------------------------------------------
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	# Calculat step 
+	m_iStep = m_iAmmount
+	if !m_bPositive:
+		m_iStep = -m_iStep
 
 #-------------------------------------------------------------------------
 func _input_event(viewport, event, shape_idx):
@@ -33,12 +38,7 @@ func _input_event(viewport, event, shape_idx):
 	
 #-------------------------------------------------------------------------
 # Use comsumable and emit signal 
-func UseConsumable():
-	# Calculat step 
-	var step = m_iAmmount
-	if !m_bPositive:
-		step = -step
-	
+func UseConsumable() -> void:
 	# Emit
-	print("Using: ", m_sName,", affect: ", str(EEffect.keys()[m_EffectType]), ", by: ", step)
-	emit_signal("use")
+	#print("Using: ", m_sName,", affect: ", str(EEffect.keys()[m_EffectType]), ", by: ", m_iStep)
+	emit_signal("signal_OnUse", self)

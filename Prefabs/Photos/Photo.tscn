@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Sprites/Placeholders/ph_photo1.jpg" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[node name="Photo" type="Area2D"]
+scale = Vector2( 0.22488, 0.22488 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2( 197.316, 148.951 )
+shape = SubResource( 1 )
+
+[node name="PhPhoto1" type="Sprite" parent="CollisionShape2D"]
+scale = Vector2( 0.005068, 0.0067136 )
+texture = ExtResource( 1 )
